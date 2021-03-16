@@ -2,7 +2,6 @@ import '@babel/polyfill';
 import './scss/reset.scss';
 import './scss/index.scss';
 import digit from './digit';
-import { render } from 'art-template';
 
 const WINDOW_WIDTH = 1024;
 const WINDOW_HEIGHT = 768;
