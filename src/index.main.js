@@ -1,46 +1,42 @@
 import '@babel/polyfill';
-import "./scss/reset.scss";
-import "./scss/index.scss";
+import './scss/reset.scss';
+import './scss/index.scss';
+import digit from './digit';
+import { render } from 'art-template';
+
+const WINDOW_WIDTH = 1024;
+const WINDOW_HEIGHT = 768;
 
 const canvas = document.querySelector('#canvas');
 
-canvas.width = 1024;
-canvas.height = 768;
+canvas.width = WINDOW_WIDTH;
+canvas.height = WINDOW_HEIGHT;
 
 const ctx = canvas.getContext('2d');
 
-ctx.beginPath();
-ctx.moveTo(100, 100);
-ctx.lineTo(700, 700);
-ctx.lineTo(100, 700);
-ctx.lineTo(100, 100);
-ctx.closePath();
+render(ctx);
 
-ctx.lineWidth = 5;
-ctx.strokeStyle = 'red';
-ctx.stroke();
+function render(ctx) {
+  let hours = 12;
+  let minutes = 34;
+  let seconds = 56;
 
-ctx.beginPath();
-ctx.moveTo(200, 100);
-ctx.lineTo(700, 600);
-ctx.closePath();
+  renderDigit(0, 0, parseInt(hours / 10), ctx);
+}
 
-ctx.strokeStyle = 'black';
-ctx.stroke();
+function renderDigit(x, y, num, ctx) {
+  ctx.fillStyle = 'rgb(0, 102, 153)';
 
-/* 画线 */
-/*
-ctx.lineWidth = 5;
-ctx.strokeStyle = '#005588';
-ctx.stroke();
-*/
-
-/** 填充颜色 */
-/*
-ctx.fillStyle = 'rgb(2, 100, 30)';
-ctx.fill();
-//  为三角形绘制边框
-ctx.lineWidth = 5;
-ctx.strokeStyle = 'red';
-ctx.stroke();
-*/
+  for (let i = 0; i < digit[num]; i++) {
+    const item = digit[num];
+    for (let j = 0; j < item[i].length;j++) {
+      if  (digit[num][i][j] === 1) {
+        // 绘制圆球
+        ctx.beginPath();
+        ctx.arc();
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+  }
+}

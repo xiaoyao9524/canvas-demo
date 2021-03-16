@@ -21,13 +21,20 @@ module.exports = {
       template: "./src/index.html",
       chunks: ['index', 'common']
     },
-    // 七巧板
     {
       entryName: "index2",
       entryPath: "./src/index2.main.js",
       filename: "index2.html",
       template: "./src/index2.html",
       chunks: ['index2', 'common']
+    },
+    // 七巧板
+    {
+      entryName: "tangram",
+      entryPath: "./src/tangram.main.js",
+      filename: "tangram.html",
+      template: "./src/tangram.html",
+      chunks: ['tangram', 'common']
     }
   ]
 };
